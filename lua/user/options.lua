@@ -1,4 +1,5 @@
-lvim.colorscheme = "darkplus"
+-- lvim.colorscheme = "darkplus"
+lvim.colorscheme = "nord"
 lvim.log.level = "warn"
 lvim.builtin.alpha.active = true
 lvim.builtin.illuminate.active = false

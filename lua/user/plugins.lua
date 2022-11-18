@@ -87,6 +87,7 @@ lvim.plugins = {
       }
     end,
   },
+  {"shaunsingh/nord.nvim"},
   -- "MunifTanjim/nui.nvim",
   -- {
   --   "folke/noice.nvim",
