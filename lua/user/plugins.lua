@@ -87,6 +87,8 @@ lvim.plugins = {
       }
     end,
   },
+  {"imsnif/kdl.vim"},
+  -- nord theme
   {"shaunsingh/nord.nvim"},
   -- "MunifTanjim/nui.nvim",
   -- {
