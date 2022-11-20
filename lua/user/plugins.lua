@@ -87,7 +87,15 @@ lvim.plugins = {
       }
     end,
   },
-  {"imsnif/kdl.vim"},
+  -- kdl file support (zellij)
+  { "imsnif/kdl.vim" },
+  {
+    'LhKipp/nvim-nu',
+    run = ":TSInstall nu",
+    config = function()
+      require('nu').setup({})
+    end
+  },
   -- nord theme
   {"shaunsingh/nord.nvim"},
   -- "MunifTanjim/nui.nvim",
