@@ -1,14 +1,29 @@
 -- Additional Plugins
 lvim.plugins = {
-  "ellisonleao/gruvbox.nvim",
   "nvim-treesitter/playground",
+
+  -- Syntax aware text-objects, select, move, swap, and peek support.
   "nvim-treesitter/nvim-treesitter-textobjects",
-  "p00f/nvim-ts-rainbow",
+
+  -- rainbow perenthesis
+  -- "p00f/nvim-ts-rainbow",
+
+  -- Java LSP extensions. Provides refactoring/debugging/etc
   "mfussenegger/nvim-jdtls",
+
+  -- Smooth scrolling
   "karb94/neoscroll.nvim",
-  -- "j-hui/fidget.nvim",
-  "windwp/nvim-ts-autotag",
+
+  -- Standalone UI for nvim-lsp progress. Eye candy for the impatient.
+  "j-hui/fidget.nvim",
+
+  -- Use treesitter to autoclose and autorename html tag
+  -- "windwp/nvim-ts-autotag",
+
+  -- Surround selections, stylishly
   "kylechui/nvim-surround",
+
+  -- Getting you where you want with the fewest keystrokes. (bookmarks)
   "christianchiarulli/harpoon",
   "MattesGroeger/vim-bookmarks",
   "NvChad/nvim-colorizer.lua",
@@ -94,6 +109,13 @@ lvim.plugins = {
     run = ":TSInstall nu",
     config = function()
       require('nu').setup({})
+    end
+  },
+  -- file structure view 
+  {
+    'simrat39/symbols-outline.nvim',
+    config = function()
+      require("symbols-outline").setup()
     end
   },
   -- nord theme
