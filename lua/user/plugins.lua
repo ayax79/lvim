@@ -1,5 +1,6 @@
 -- Additional Plugins
 lvim.plugins = {
+  -- treesitter information in neovim :TSPlaygoundToggle
   "nvim-treesitter/playground",
 
   -- Syntax aware text-objects, select, move, swap, and peek support.
@@ -24,34 +25,87 @@ lvim.plugins = {
   "kylechui/nvim-surround",
 
   -- Getting you where you want with the fewest keystrokes. (bookmarks)
-  "christianchiarulli/harpoon",
-  "MattesGroeger/vim-bookmarks",
+  --"christianchiarulli/harpoon",
+
+  -- This vim plugin allows toggling bookmarks per line. 
+  -- A quickfix window gives access to all bookmarks. 
+  -- Annotations can be added as well. 
+  -- These are special bookmarks with a comment attached. 
+  -- They are useful for preparing code reviews. 
+  -- All bookmarks will be restored on the next startup.
+  --"MattesGroeger/vim-bookmarks",
+
+  -- A high-performance color highlighter for Neovim which has no external dependencies! 
   "NvChad/nvim-colorizer.lua",
+
+
+  -- Cy[cle]bu[ffer].nvim provides two modes. 
+  -- The first is essentially a wrapper around :bnext & :bprevious, which adds a customizable notification window, that shows the buffer in focus and its neighbors, to provide context when cycling the buffer list with the provided plugin commands / key bindings.
   "ghillb/cybu.nvim",
+
+  -- allows buffer deltion via :Bdelete and :Bwipeout
   "moll/vim-bbye",
+
+  -- highlighting and search and replace for for todo messages
   "folke/todo-comments.nvim",
+
+  -- Search and replace
   "windwp/nvim-spectre",
+
+  -- show get blame messages 
   "f-person/git-blame.nvim",
   "ruifm/gitlinker.nvim",
-  "mattn/vim-gist",
-  "mattn/webapi-vim",
+
+  -- for creating gists
+  -- "mattn/vim-gist",
+
+  -- interface for calling web apis in nvim lua
+  -- "mattn/webapi-vim",
   "folke/zen-mode.nvim",
+
   "lvimuser/lsp-inlayhints.nvim",
-  "lunarvim/darkplus.nvim",
-  "lunarvim/templeos.nvim",
+
+  -- better quickfix window
   "kevinhwang91/nvim-bqf",
-  "is0n/jaq-nvim",
+
+
+  -- just another quickrun plugin
+  -- "is0n/jaq-nvim",
+
+  -- nvim-cmp source for emojis
   "hrsh7th/cmp-emoji",
+
+  -- general purpose motion plugin for leaping around files
   "ggandor/leap.nvim",
+
+  -- peak at the line number in the current buffer when enter :num
   "nacro90/numb.nvim",
+
+  -- Magit clone for neovim 
   "TimUntersberger/neogit",
+
+  -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
   "sindrets/diffview.nvim",
+
+  -- rust tools, debugging, rust-analyzer, etc.
   "simrat39/rust-tools.nvim",
+
+  -- golang development plugin
   "olexsmir/gopher.nvim",
+
+  -- debugging go 
   "leoluz/nvim-dap-go",
-  "mfussenegger/nvim-dap-python",
-  "jose-elias-alvarez/typescript.nvim",
-  "mxsdev/nvim-dap-vscode-js",
+
+  -- debugging python
+  -- "mfussenegger/nvim-dap-python",
+
+  -- typescript development plugin
+  -- "jose-elias-alvarez/typescript.nvim",
+
+  -- javascript debugging
+  -- "mxsdev/nvim-dap-vscode-js",
+
+  -- crates support
   {
     "saecki/crates.nvim",
     tag = "v0.3.0",
@@ -80,28 +134,48 @@ lvim.plugins = {
     run = "cd js && npm ci",
   },
   { "tzachar/cmp-tabnine", run = "./install.sh" },
+
+
+  -- faster implementation of copilot.vim written in lua
   {
     "zbirenbaum/copilot.lua",
-    -- event = { "VimEnter" },
+    event = "VimEnter",
     config = function()
       vim.defer_fn(function()
-        require("copilot").setup {
-          plugin_manager_path = os.getenv "LUNARVIM_RUNTIME_DIR" .. "/site/pack/packer",
-        }
+        require("copilot").setup()
       end, 100)
     end,
   },
   {
     "zbirenbaum/copilot-cmp",
     after = { "copilot.lua" },
-    config = function()
-      require("copilot_cmp").setup {
-        formatters = {
-          insert_text = require("copilot_cmp.format").remove_existing,
-        },
-      }
-    end,
+    config = function ()
+      require("copilot_cmp").setup()
+    end
   },
+
+--  {
+--    "zbirenbaum/copilot.lua",
+--    -- event = { "VimEnter" },
+--    config = function()
+--      vim.defer_fn(function()
+--        require("copilot").setup {
+--          plugin_manager_path = os.getenv "LUNARVIM_RUNTIME_DIR" .. "/site/pack/packer",
+--        }
+--      end, 100)
+--    end,
+--  },
+--  {
+--    "zbirenbaum/copilot-cmp",
+--    after = { "copilot.lua" },
+--    config = function()
+--      require("copilot_cmp").setup {
+--        formatters = {
+--          insert_text = require("copilot_cmp.format").remove_existing,
+--        },
+--      }
+--    end,
+--  },
   -- kdl file support (zellij)
   { "imsnif/kdl.vim" },
   {
@@ -118,8 +192,15 @@ lvim.plugins = {
       require("symbols-outline").setup()
     end
   },
+
+  -- themese 
   -- nord theme
   {"shaunsingh/nord.nvim"},
+  -- darkplus colarschema
+  -- "lunarvim/darkplus.nvim",
+  -- "lunarvim/templeos.nvim",
+
+
   -- "MunifTanjim/nui.nvim",
   -- {
   --   "folke/noice.nvim",
