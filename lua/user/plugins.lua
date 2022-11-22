@@ -66,8 +66,32 @@ lvim.plugins = {
   "lvimuser/lsp-inlayhints.nvim",
 
   -- better quickfix window
-  "kevinhwang91/nvim-bqf",
-
+  {
+    "kevinhwang91/nvim-bqf",
+    ft = 'qf',
+    config = function()
+      require("bqf").setup({
+        auto_resize_height = true,
+        preview = {
+          win_height = 12,
+          win_vheight = 12,
+          delay_syntax = 80,
+          border_chars = { "┃", "┃", "━", "━", "┏", "┓", "┗", "┛", "█" },
+        },
+        func_map = {
+          vsplit = "",
+          ptogglemode = "z,",
+          stoggleup = "",
+        },
+        filter = {
+          fzf = {
+            action_for = { ["ctrl-s"] = "split" },
+            extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
+          },
+        },
+      })
+    end
+  },
 
   -- just another quickrun plugin
   -- "is0n/jaq-nvim",
@@ -154,6 +178,7 @@ lvim.plugins = {
     end
   },
 
+-- original config that was causing issuegsg
 --  {
 --    "zbirenbaum/copilot.lua",
 --    -- event = { "VimEnter" },
@@ -190,6 +215,19 @@ lvim.plugins = {
     'simrat39/symbols-outline.nvim',
     config = function()
       require("symbols-outline").setup()
+    end
+  },
+
+  -- error/warning information
+  {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
     end
   },
 
