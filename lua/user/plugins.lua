@@ -25,7 +25,7 @@ lvim.plugins = {
   "kylechui/nvim-surround",
 
   -- Getting you where you want with the fewest keystrokes. (bookmarks)
-  --"christianchiarulli/harpoon",
+  "christianchiarulli/harpoon",
 
   -- This vim plugin allows toggling bookmarks per line. 
   -- A quickfix window gives access to all bookmarks. 
@@ -33,7 +33,7 @@ lvim.plugins = {
   -- These are special bookmarks with a comment attached. 
   -- They are useful for preparing code reviews. 
   -- All bookmarks will be restored on the next startup.
-  --"MattesGroeger/vim-bookmarks",
+  "MattesGroeger/vim-bookmarks",
 
   -- A high-performance color highlighter for Neovim which has no external dependencies! 
   "NvChad/nvim-colorizer.lua",
