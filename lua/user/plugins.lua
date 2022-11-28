@@ -231,6 +231,8 @@ lvim.plugins = {
     end
   },
 
+  {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'},
+
   -- themese 
   -- nord theme
   {"shaunsingh/nord.nvim"},
