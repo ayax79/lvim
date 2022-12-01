@@ -231,7 +231,15 @@ lvim.plugins = {
     end
   },
 
-  {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'},
+
+  -- {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'},
+
+  -- scala language
+  {'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }},
+
+
+  -- buffers as tabs
+  -- {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'},
 
   -- themese 
   -- nord theme
