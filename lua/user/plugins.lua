@@ -232,8 +232,6 @@ lvim.plugins = {
   },
 
 
-  -- {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'},
-
   -- scala language
   {'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }},
 
