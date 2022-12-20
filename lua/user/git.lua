@@ -12,6 +12,7 @@ end
 gitlinker.setup({
 	opts = {
 		callbacks = {
+      -- todo - change me
 			["git.comcast.com"] = require("gitlinker.hosts").get_github_type_url,
 		},
 		-- remote = 'github', -- force the use of a specific remote
