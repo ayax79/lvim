@@ -93,7 +93,7 @@ lvim.plugins = {
     end
   },
 
-  -- just another quickrun plugin
+  -- just another quickbuild plugin
   -- "is0n/jaq-nvim",
 
   -- nvim-cmp source for emojis
@@ -132,8 +132,8 @@ lvim.plugins = {
   -- crates support
   {
     "saecki/crates.nvim",
-    tag = "v0.3.0",
-    requires = { "nvim-lua/plenary.nvim" },
+    version = "v0.3.0",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("crates").setup {
         null_ls = {
@@ -155,9 +155,9 @@ lvim.plugins = {
   "monaqa/dial.nvim",
   {
     "0x100101/lab.nvim",
-    run = "cd js && npm ci",
+    build = "cd js && npm ci",
   },
-  { "tzachar/cmp-tabnine", run = "./install.sh" },
+  { "tzachar/cmp-tabnine", build = "./install.sh" },
 
 
   -- faster implementation of copilot.vim written in lua
@@ -205,7 +205,7 @@ lvim.plugins = {
   { "imsnif/kdl.vim" },
   {
     'LhKipp/nvim-nu',
-    run = ":TSInstall nu",
+    build = ":TSInstall nu",
     config = function()
       require('nu').setup({})
     end
@@ -221,7 +221,7 @@ lvim.plugins = {
   -- error/warning information
   {
     "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
+    dependencies = "kyazdani42/nvim-web-devicons",
     config = function()
       require("trouble").setup {
         -- your configuration comes here
@@ -233,7 +233,7 @@ lvim.plugins = {
 
 
   -- scala language
-  {'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }},
+  {'scalameta/nvim-metals', dependencies = { "nvim-lua/plenary.nvim" }},
 
 
   -- buffers as tabs

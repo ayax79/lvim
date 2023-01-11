@@ -12,7 +12,7 @@ if lvim.colorscheme == "darkplus" then
 end
 
 
-lvim.builtin.treesitter.ensure_installed = "all"
+-- lvim.builtin.treesitter.ensure_installed = "all"
 
 lvim.builtin.treesitter.textobjects = {
 	select = {
