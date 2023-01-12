@@ -46,14 +46,16 @@ vim.list_extend(
 	)
 )
 
+
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
 	-- The command that starts the language server
 	-- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
 	cmd = {
-
+    -- don't use the JAVA_HOME because sometimes it is 1.8 or 1.11... todo: make this work on linux too
+    "/Library/Java/JavaVirtualMachines/jdk-17.0.5.jdk/Contents/Home/bin/java",
 		-- 💀
-		"java", -- or '/path/to/java11_or_newer/bin/java'
+		-- "java", -- or '/path/to/java11_or_newer/bin/java'
 		-- depends on if `java` is in your $PATH env variable and if it points to the right version.
 
 		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
@@ -115,8 +117,20 @@ local config = {
 				updateBuildConfiguration = "interactive",
 				runtimes = {
 					{
-						name = "JavaSE-17",
-						path = "/Library/Java/JavaVirtualMachines/jdk-17.0.5.jdk/Contents/Home"
+						name = "Java_SE_17.0.5",
+						path = "/Library/Java/JavaVirtualMachines/jdk-17.0.5.jdk/Contents/Home/"
+					},
+          {
+						name = "Amazon_Corretto_17",
+						path = "/Library/Java/JavaVirtualMachines/amazon-corretto-17.jdk/Contents/Home/"
+					},
+          {
+						name = "Amazon_Corretto_11",
+						path = "/Library/Java/JavaVirtualMachines/amazon-corretto-11.jdk/Contents/Home/"
+					},
+          {
+						name = "Amazon_Corretto_8",
+						path = "/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home/"
 					},
 				},
 			},
@@ -192,7 +206,8 @@ local config = {
 config["on_attach"] = function(client, bufnr)
 	local _, _ = pcall(vim.lsp.codelens.refresh)
 	require("jdtls.dap").setup_dap_main_class_configs()
-	require("jdtls").setup_dap({ hotcodereplace = "auto" })
+	-- require("jdtls").setup_dap({ hotcodereplace = "auto" })
+  jdtls.setup_dap({hotcodereplace = "auto"})
 	require("lvim.lsp").on_attach(client, bufnr)
 end
 

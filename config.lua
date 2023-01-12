@@ -1,6 +1,9 @@
 -- Since I use nushell by default, explicitly set the shell to zsh so that things like 
 -- rust codelens actions do not break
 vim.cmd("set shell=/bin/zsh")
+-- for some reason this wasn't being picked up correctly in lua/user/lsp/init.lua
+-- I should fix at some point, but this seems to work
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "jdtls" })
 reload "user.plugins"
 reload "user.options"
 reload "user.keymaps"
