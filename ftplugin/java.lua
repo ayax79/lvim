@@ -272,7 +272,7 @@ local mappings = {
     d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Goto definition"},
     D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration"},
     r = { "<Cmd>lua vim.lsp.buf.references()<CR>", "Goto references"},
-    I = { "<Cmd>lua vim.lsp.buf.implementations()<CR>", "Goto implementation"},
+    I = { "<Cmd>lua vim.lsp.buf.implementation()<CR>", "Goto implementation"},
   }
 }
 
