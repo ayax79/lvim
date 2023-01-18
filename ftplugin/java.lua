@@ -209,7 +209,7 @@ config["on_attach"] = function(client, bufnr)
 	-- require("jdtls").setup_dap({ hotcodereplace = "auto" })
   jdtls.setup_dap({hotcodereplace = "auto"})
 	require("lvim.lsp").on_attach(client, bufnr)
-end
+ end
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	pattern = { "*.java" },
@@ -263,7 +263,17 @@ local mappings = {
 		t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
 		T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
 		u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
+    s= { "<Cmd>lua vim.lsp.buf.signature_help()<CR>", "Show Signature Help"},
+    K= { "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover"},
 	},
+  -- java navigation... trying this since the defaults don't seem to stick
+  n = {
+    name = "Java Navigation",
+    d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Goto definition"},
+    D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration"},
+    r = { "<Cmd>lua vim.lsp.buf.references()<CR>", "Goto references"},
+    I = { "<Cmd>lua vim.lsp.buf.implementations()<CR>", "Goto implementation"},
+  }
 }
 
 local vmappings = {
@@ -277,4 +287,21 @@ local vmappings = {
 
 which_key.register(mappings, opts)
 which_key.register(vmappings, vopts)
-which_key.register(vmappings, vopts)
+which_key.register(vmappings, vopts)   -- for some reason keybindings are lost... manually set them up
+
+
+-- Doesn't seem to work, leaving anyways
+lvim.builtin.which_key.mappings["K"] = { vim.lsp.buf.hover, "Show hover" }
+lvim.builtin.which_key.mappings["gd"] = { vim.lsp.buf.definition, "Goto Definition" }
+lvim.builtin.which_key.mappings["gD"] = { vim.lsp.buf.declaration, "Goto declaration" }
+lvim.builtin.which_key.mappings["gr"] = { vim.lsp.buf.references, "Goto references" }
+lvim.builtin.which_key.mappings["gI"] = { vim.lsp.buf.implementation, "Goto Implementation" }
+lvim.builtin.which_key.mappings["gs"] = { vim.lsp.buf.signature_help, "show signature help" }
+lvim.builtin.which_key.mappings["gl"] = {
+  function()
+    local config = lvim.lsp.diagnostics.float
+    config.scope = "line"
+    vim.diagnostic.open_float(0, config)
+  end,
+  "Show line diagnostics",
+}
